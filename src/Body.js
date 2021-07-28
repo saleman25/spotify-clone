@@ -28,7 +28,6 @@ function Body({ spotify }) {
                     <FavoriteIcon fontSize="large" />
                     <MoreHorizIcon />
                 </div>
-                    {/* list of songs */}
                     {on_repeat?.tracks.items.map((item) => (
                         <SongRow track={item.track} />
                         ))}
