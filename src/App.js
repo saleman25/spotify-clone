@@ -43,6 +43,7 @@ function App() {
       })
 
       spotify.getPlaylist('37i9dQZF1EpiVXU73rYrHv').then(response => {
+        console.log(response)
         dispatch({
           type: "SET_ON_REPEAT",
           on_repeat: response,
