@@ -25,6 +25,13 @@ const reducer = (state, action) => {
                 ...state,
                 playlists: action.playlists,
             }    
+
+        case "SET_ON_REPEAT":
+            return{
+                ...state,
+                on_repeat: action.on_repeat,
+            }  
+              
             default: 
                 return state;
     }
