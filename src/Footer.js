@@ -13,7 +13,11 @@ function Footer() {
   return (
     <div className="footer">
       <div className="footer_left">
-        <p>album n song deets</p>
+        <img className="footer_albumLogo" src='https://i1.sndcdn.com/artworks-WDc2cBhLIdjq-0-t500x500.jpg' alt='' />
+        <div className='footer_songInfo'>
+            <h4>Disco Inferno</h4>
+            <p>50 Cent</p>
+        </div>
       </div>
       <div className="footer_center">
         <ShuffleIcon className="footer_green" />

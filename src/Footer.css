@@ -11,6 +11,17 @@
 
 .footer_left {
     flex: 0.3;
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 300px;
+}
+
+.footer_albumLogo{
+    height: 60px;
+    width: 60px;
+    margin-right: 20px;
+    object-fit: contain;
 }
 
 .footer_center{
@@ -25,4 +36,8 @@
 
 .footer_right{
     flex: 0.3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
 }
