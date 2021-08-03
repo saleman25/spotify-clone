@@ -12,12 +12,77 @@ import { Grid, Slider } from "@material-ui/core";
 
 function Footer({ spotify }) {
 
-
   // i'm going to need to add functunality here for the buttons 
   // so that i can actually skip/goback/play/pause
   // i'm going to need to set ??? new cases for dispatch?
   // i need to refactor the div for the now playing so that it updates accordingly
 
+  const [{ token, item, playing }, dispatch] = useStateProviderValue();
+ 
+  useEffect(() => {
+    spotify.getMyCurrentPlaybackState().then((r) => {
+      console.log(r);
+
+      dispatch({
+        type: "SET_PLAYING",
+        playing: r.is_playing,
+      });
+
+      dispatch({
+        type: "SET_ITEM",
+        item: r.item,
+      })
+    })
+  }, [spotify]);
+
+  // handle play and pausing
+  const handlePlayPause = () => {
+    if (playing) {
+      spotify.pause();
+      dispatch({
+        type: "SET_PLAYING",
+        playing: false,
+      });
+    } else {
+      spotify.play();
+      dispatch({
+        type: "SET_PLAYING",
+        playing: true,
+      });
+    }
+  };
+
+  // handle skipping song
+  const skipNext = () => {
+    spotify.skipToNext();
+    spotify.getMyCurrentPlayingTrack().then((r) => {
+      console.log(r);
+      dispatch({
+        type: "SET_ITEM",
+        item: r.item,
+      });
+      dispatch({
+        type: "SET_PLAYING",
+        playing: true,
+      });
+    });
+  };
+
+  // handle going back to previous
+const skipPrevious = () => {
+  spotify.skipToPrevious();
+  spotify.getMyCurrentPlayingTrack().then((r) => {
+    console.log(r);
+    dispatch({
+      type: "SET_ITEM",
+      item: r.item,
+    })
+    dispatch({
+      type: "SET_PLAYING",
+      playing: true,
+    });
+  });
+};
 
 
   return (
