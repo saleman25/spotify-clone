@@ -15,12 +15,15 @@ function Body({ spotify }) {
     // its going to be on this coponent where i'm going to need to 
     // set some function that actually updates the now playing song
     // i am only going to use the one playlist 
+
+    // play the whole playlist
     const playPlaylist = (id) => {
         spotify
             .play({
-                context_uri: `spotify:37i9dQZF1EpiVXU73rYrHv`,
+                context_uri: `spotify:playlist:37i9dQZF1EpiVXU73rYrHv`,
             })
             .then((res) => {
+                console.log(res)
                 spotify.getMyCurrentPlayingTrack().then((r) => {
                     dispatch({
                         type: "SET_ITEM",
@@ -32,8 +35,9 @@ function Body({ spotify }) {
                     });
                 });
             });
-    },
+    }
 
+    // play an idividual song
     const playSong = (id) => {
         spotify
             .play({
