@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useStateProviderValue } from './StateProvider';
 import "./Footer.css";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
@@ -9,7 +10,14 @@ import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import { Grid, Slider } from "@material-ui/core";
 
-function Footer() {
+function Footer({ spotify }) {
+
+
+  // i'm going to need to add functunality here for the buttons 
+  // so that i can actually skip/goback/play/pause
+  // i'm going to need to set ??? new cases for dispatch?
+
+
   return (
     <div className="footer">
       <div className="footer_left">

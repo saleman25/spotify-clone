@@ -6,6 +6,8 @@ export const initialState = {
     token: null,
 };
 
+// add cases for setting the now playing song
+
 const reducer = (state, action) => {
     console.log(action);
 
@@ -31,6 +33,28 @@ const reducer = (state, action) => {
                 ...state,
                 on_repeat: action.on_repeat,
             }  
+
+        // refactor but not necessary yet 
+        // case "SET_SPOTIFY":
+        //     return {
+        //         ...state,
+        //         spotify: action.spotify,
+        //     }
+        
+        // this will set the 'play' functunality
+        case "SET_PLAYING":
+            return {
+                ...state,
+                playing: action.playing,
+            }
+
+        // this will set the song that will be picked? for lack of a better word, to be played next 
+        case "SET_ITEM":
+            return{
+                ...state,
+                item: action.item,
+            }    
+
               
             default: 
                 return state;

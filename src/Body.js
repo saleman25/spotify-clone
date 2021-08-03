@@ -11,6 +11,13 @@ function Body({ spotify }) {
 
     const [{ on_repeat }, dispatch] = useStateProviderValue();
 
+    // start integrating functunality to play songs
+    // its going to be on this coponent where i'm going to need to 
+    // set some function that actually updates the now playing song
+    // i am only going to use the one playlist 
+
+
+
     return (
         <div className="body">
             <Header spotify={spotify} />

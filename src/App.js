@@ -42,6 +42,12 @@ function App() {
         })
       })
 
+      // refactor but not necessary
+      // dispatch({
+      //   type: "SET_SPOTIFY",
+      //   spotify: s,
+      // });
+
       spotify.getPlaylist('37i9dQZF1EpiVXU73rYrHv').then(response => {
         console.log(response)
         dispatch({
