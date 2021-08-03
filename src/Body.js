@@ -44,6 +44,7 @@ function Body({ spotify }) {
                 uris: [`spotify:track:${id}`],
             })
             .then((res) => {
+                console.log(res)
                 spotify.getMyCurrentPlayingTrack().then((r) => {
                     dispatch({
                         type: "SET_ITEM",
