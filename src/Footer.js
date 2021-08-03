@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useStateProviderValue } from './StateProvider';
 import "./Footer.css";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
+import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import ShuffleIcon from "@material-ui/icons/Shuffle";
@@ -107,9 +108,25 @@ const skipPrevious = () => {
 
       <div className="footer_center">
         <ShuffleIcon className="footer_green" />
-        <SkipPreviousIcon className='footer_icon' />
-        <PlayCircleOutlineIcon fontSize='large' className='footer_icon' />
-        <SkipNextIcon className="footer_icon" />
+        <SkipPreviousIcon onClick={skipNext} className='footer_icon' />
+        
+
+        {playing ? (
+          <PauseCircleOutlineIcon
+            onClick={handlePlayPause}
+            fontSize="large"
+            className="footer__icon"
+          />
+        ) : (
+          <PlayCircleOutlineIcon
+            onClick={handlePlayPause}
+            fontSize="large"
+            className="footer__icon"
+          />
+        )}
+        
+
+        <SkipNextIcon onClick={skipPrevious} className="footer_icon" />
         <RepeatIcon className="footer_green" />
 
       </div>
