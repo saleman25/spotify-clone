@@ -15,6 +15,43 @@ function Body({ spotify }) {
     // its going to be on this coponent where i'm going to need to 
     // set some function that actually updates the now playing song
     // i am only going to use the one playlist 
+    const playPlaylist = (id) => {
+        spotify
+            .play({
+                context_uri: `spotify:37i9dQZF1EpiVXU73rYrHv`,
+            })
+            .then((res) => {
+                spotify.getMyCurrentPlayingTrack().then((r) => {
+                    dispatch({
+                        type: "SET_ITEM",
+                        item: r.item,
+                    });
+                    dispatch({
+                        type: "SET_PLAYING",
+                        playing: true,
+                    });
+                });
+            });
+    },
+
+    const playSong = (id) => {
+        spotify
+            .play({
+                uris: [`spotify:track:${id}`],
+            })
+            .then((res) => {
+                spotify.getMyCurrentPlayingTrack().then((r) => {
+                    dispatch({
+                        type: "SET_ITEM",
+                        item: r.item,
+                    });
+                    dispatch({
+                        type: "SET_PLAYING",
+                        playing: true,
+                    });
+                });
+            });
+    }
 
 
 
@@ -31,12 +68,13 @@ function Body({ spotify }) {
             </div>
             <div className="body_songs">
                 <div className="body_icons">
-                    <PlayCircleFilledIcon className="body_shuffle" />
+                    <PlayCircleFilledIcon onClick={playPlaylist} className="body_shuffle" />
+
                     <FavoriteIcon fontSize="large" />
                     <MoreHorizIcon />
                 </div>
                     {on_repeat?.tracks.items.map((item) => (
-                        <SongRow track={item.track} />
+                        <SongRow playSong={playSong} track={item.track} />
                         ))}
             </div>
         </div>
